@@ -14,9 +14,9 @@ This tutorial is NOT for you if:
 ## Tutorial video:
 Follow this video on youtube and use this README to copy the commands.
 
-## Luanch AWS EC2 instance
+## Launch AWS EC2 instance
 * Name the instance (typically the same name as the project and repo)
-* Select ```Ubunutu``` AMI
+* Select ```Ubuntu``` AMI
 * Select ```Ubuntu Server 22.04 LTS``` server (free tier)
 
 #### Instance Type
@@ -26,7 +26,7 @@ Follow this video on youtube and use this README to copy the commands.
 * Select ```Proceed without a key pair``` for Key pair
 
 #### Security Group
-These settings will allow anyone with the link to your app too access your website. If you do not want anybody else to be able to access your application then you'll need to configure these accordingly.
+These settings will allow anyone with the link to your app to access your website. If you do not want anybody else to be able to access your application then you'll need to configure these accordingly.
 
 * Select ```Allow SSH traffic``` from ```Anywhere 0.0.0.0/0```
 * Select ```Allow HTTPS traffic from the internet```
@@ -120,7 +120,7 @@ pip install gunicorn
 
 ### Collect static files
 We are using Nginx to server our static files, so we need to run this command so Nginx will know where to find them.
-* You're probably in your project directory if you followed this tutorial percisely so we need to go back one directory
+* You're probably in your project directory if you followed this tutorial precisley so we need to go back one directory
 ```
 cd ..
 ```
@@ -242,7 +242,7 @@ If your application is not appearing then you most likely made a mistake somewhe
 Follow these steps to trouble shoot the issue:
 
 * When navigating to the IPv4 address in the browser, are you getting a Bad Gateway error?
-   * This typically means an issue with the server. You mostly likely made a small mistake in the configuration files, or skipped a step somewhere along the way. 
+   * This typically means an issue with the server. You most likely made a small mistake in the configuration files, or skipped a step somewhere along the way. 
    * Your best bet is to terminate your instance and start completely over from scratch. Don't worry because it just means more practice for you and its far faster the second time.
 
 * When navigating to the IPv4 address in the browser, are you getting a Django error message?
@@ -253,7 +253,7 @@ Follow these steps to trouble shoot the issue:
         ```sudo service nginx restart```
 
 * Are you seeing your application but theres no CSS or JS being applied?
-    * Double check the path in your ```djanog.conf``` file.
+    * Double check the path in your ```django.conf``` file.
     * Maybe you skipped the ```collectstatic``` command.
 
 
