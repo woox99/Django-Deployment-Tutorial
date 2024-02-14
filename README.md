@@ -70,15 +70,19 @@ pip3 install django
 ### Clone repo from github:
 * Make sure your repo is set to public on github
 * Replace ```'HTTPS github address'``` with the address of your repo
-* If it doesn't work, double check that you're including ```.git``` at the end of the address
 ```
 git clone 'HTTPS github address'
 ```
+* If it doesn't work, double check that you're including ```.git``` at the end of the address
 
-### Edit ```settings.py```:
+### Edit ```settings.py``` file:
 Your project folder (name of repo) will contain a file ```settings.py```. We are going to edit this file within our instance using Vim (or you can use nano). 
 
 Reference the video if you are unfamilar with how to make changes to a file using Vim or nano.
+
+* Change directory to your ```project``` directory
+
+* Open ```settings.py``` with Vim:
 
 ```
 sudo vim settings.py
@@ -135,7 +139,7 @@ python manage.py collectstatic
 * If you do not see this then check if you're in the correct directory
 
 ### Install supervisor:
-We want our web server to keep running even if we close out of our instance, therefore, we'll install supervisor to handle this.
+We want our web server to keep running even if we close out of our instance, therefore, we'll install supervisor to handle this:
 ```
 sudo apt-get install supervisor
 ```
