@@ -13,6 +13,7 @@ This tutorial is NOT for you if:
 
 ## Tutorial video:
 Follow this video on youtube and use this README to copy the commands.
+<a href="https://www.youtube.com/watch?v=U22oG_HO61s&t=3s" target="_blank">Tutorial Video</a>
 
 ## Launch AWS EC2 instance
 * Name the instance (typically the same name as the project and repo)
