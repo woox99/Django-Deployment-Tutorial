@@ -104,6 +104,20 @@ with this line:
 with this line:
 ```ALLOWED_HOSTS = ['*']```
 
+* Change Database to MySQL (if you're using mysql db)
+```
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        'NAME': 'examplename', // Keep as string
+        'USER': 'exampleuser', // Keep as string
+        'PASSWORD': 'examplepassword, // Keep as string
+        'HOST': 'localhost', // Keep as string
+        'PORT': 3306,
+    }
+}
+```
+
 * Add this line: ```STATIC_ROOT = os.path.join(BASE_DIR, 'static')```
 * Now save and exit: ```Esc``` -> ```:wq``` -> ```Enter```
 
