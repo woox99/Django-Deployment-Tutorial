@@ -110,6 +110,58 @@ with this line:
 ### Install dependencies:
 Now is a good time to install any dependencies or requirements your application may have. For example my tutorial application in the video uses ```bcrypt``` so I'm installing that now.
 
+### Install MySQL:
+```
+sudo apt-get install mysql-server     
+// answer yes
+sudo apt-get update
+sudo apt update
+sudo apt install pkg-config python3-dev libmysqlclient-dev default-libmysqlclient-dev build-essential
+pip install mysqlclient
+```
+
+```
+ sudo mysql -uroot -p
+ // enter the same password as MySQL on your computer when prompted
+ ```
+
+ ```
+ mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_mysql_password';
+ mysql> FLUSH PRIVILEGES;
+ mysql> quit
+ ```
+
+ ```
+sudo mysql_secure_installation
+```
+
+
+```
+ANSWER Y/N IN THIS ORDER:
+NO
+NO 
+YES
+YES
+YES
+YES
+```
+
+```
+mysql -uroot -p
+# enter password when prompted
+```
+
+Now, export mysql db file with  `create scheme`.
+
+Open db file in editor and copy/paste the file into the mysql> command line.
+
+Verify that the database was created with:
+```
+SHOW DATABASES;
+exit
+```
+
+
 ### Install Nginx:
 We are using Nginx for our web server. We will also be using Nginx to serve our static CSS and/or JS files later.
 
