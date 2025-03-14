@@ -157,8 +157,8 @@ Open db file in editor and copy/paste the file into the mysql> command line.
 
 Verify that the database was created with:
 ```
-SHOW DATABASES;
-exit
+mysql> SHOW DATABASES;
+mysql> exit
 ```
 
 
