@@ -139,6 +139,8 @@ pip install mysqlclient
  // enter the same password as MySQL on your computer when prompted
  ```
 
+Replace ```your_mysql_password```
+
  ```
  mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_mysql_password';
  mysql> FLUSH PRIVILEGES;
