@@ -109,9 +109,9 @@ with this line:
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        'NAME': 'examplename', // Keep as string
-        'USER': 'exampleuser', // Keep as string
-        'PASSWORD': 'examplepassword, // Keep as string
+        'NAME': 'db_name', // Keep as string
+        'USER': 'db_username', // Keep as string
+        'PASSWORD': 'db_password', // Keep as string
         'HOST': 'localhost', // Keep as string
         'PORT': 3306,
     }
@@ -123,6 +123,10 @@ DATABASES = {
 
 ### Install dependencies:
 Now is a good time to install any dependencies or requirements your application may have. For example my tutorial application in the video uses ```bcrypt``` so I'm installing that now.
+
+```
+pip install -r requirements.txt
+```
 
 ### Install MySQL:
 ```
