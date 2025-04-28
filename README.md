@@ -138,9 +138,9 @@ sudo apt install pkg-config python3-dev libmysqlclient-dev default-libmysqlclien
 pip install mysqlclient
 ```
 
+enter the same password as MySQL on your computer when prompted
 ```
- sudo mysql -uroot -p
- // enter the same password as MySQL on your computer when prompted
+sudo mysql -uroot -p
  ```
 
 Replace ```your_mysql_password```
@@ -166,9 +166,9 @@ YES
 YES
 ```
 
+enter password when prompted
 ```
 mysql -uroot -p
-# enter password when prompted
 ```
 
 Now, export mysql db file with  `create scheme`.
@@ -197,13 +197,8 @@ pip install gunicorn
 
 ### Collect static files
 We are using Nginx to server our static files, so we need to run this command so Nginx will know where to find them.
-* You're probably in your project directory if you followed this tutorial precisley so we need to go back one directory
-```
-cd ..
-```
-
-* Now you should be in your repo directory that contains a file ```manage.py```
-* Run this command
+* Navigate to the directory that contains a file ```manage.py```
+* Run this collect static
 ```
 python manage.py collectstatic
 ```
@@ -311,27 +306,63 @@ Congratulations! You should now be able to navigate to the Public IPv4 address o
 
 You can now close the AWS instance and your application will continue to run (do not stop or terminate it).
 
-# Trouble Shooting
-If your application is not appearing then you most likely made a mistake somewhere. 
+# Pulling Repo Update 
+If you make changes to the application and want to pull those changes to your instance follow this series of steps.
 
-**DO NOT FEEL DISCOURAGED, THIS IS SO COMMON. In fact it is common for me to attempt and fail 2 or 3 deployments when deploying a new framework the first time.**
+### Activate Virtual Environment
+```
+source env/bin/activate
+```
+### Git Pull
+Make sure you github repository is public
+```
+cd 'project'
+git pull origin main
+```
+### Updating Database?
+Either make changes to database or drop database and copy paste updated database into client.
 
-Follow these steps to trouble shoot the issue:
+Enter password when prompted
+```
+sudo mysql -uroot -p
+EXIT;
+SHOW DATABASES;
+XX DROP DATABASE 'database_name'; XX
+```
 
-* When navigating to the IPv4 address in the browser, are you getting a Bad Gateway error?
-   * This typically means an issue with the server. You most likely made a small mistake in the configuration files, or skipped a step somewhere along the way. 
-   * Your best bet is to terminate your instance and start completely over from scratch. Don't worry because it just means more practice for you and its far faster the second time.
+Navigate to `manage.py` file and run migrations (if models changed):
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
-* When navigating to the IPv4 address in the browser, are you getting a Django error message?
-    * Good news! Your project is deployed but theres an issue within your app. 
-    * Make sure that if your app's index route (home page) is something other than ```/```, that you are including it after the IPv4 address in the URL.
-    * Double check your settings.py file (in the instance)
-        * If you make any changes to any files in the instance, you will need to restart the nginx server:
-        ```sudo service nginx restart```
+### Collect Static Files
+Navigate to `manage.py` file:
+```
+python manage.py collectstatic
+```
+### Check settings.py
+Check `settings.py` file. You may need to reconfigure this file to deployment ready state.
+```
+sudo vim settings.py
+```
+### Restart Servers
+```
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status
+```
+You will get the status of of gunicor that looks something like this:
+`guni:gunicorn` RUNNING pid 657, uptime 0:54:15
 
-* Are you seeing your application but theres no CSS or JS being applied?
-    * Double check the path in your ```django.conf``` file.
-    * Maybe you skipped the ```collectstatic``` command.
+Use the program name to restart
+```
+sudo supervisorctl restart guni:gunicorn
+```
 
+Restart nginx
+```
+sudo service nginx restart
+```
 
 
