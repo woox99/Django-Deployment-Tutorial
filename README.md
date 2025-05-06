@@ -317,6 +317,8 @@ source env/bin/activate
 Make sure you github repository is public
 ```
 cd 'project'
+```
+```
 git pull origin main
 ```
 ### Updating Database?
@@ -333,6 +335,8 @@ XX DROP DATABASE 'database_name'; XX
 Navigate to `manage.py` file and run migrations (if models changed):
 ```
 python manage.py makemigrations
+```
+```
 python manage.py migrate
 ```
 
@@ -349,7 +353,11 @@ sudo vim settings.py
 ### Restart Servers
 ```
 sudo supervisorctl reread
+```
+```
 sudo supervisorctl update
+```
+```
 sudo supervisorctl status
 ```
 You will get the status of of gunicor that looks something like this:
